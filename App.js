@@ -1,20 +1,10 @@
 import React, { Component } from 'react';
-import {
-  Container,
-  Header,
-  Title,
-  Left,
-  Right,
-  Body,
-  Text,
-  Drawer,
-  Button,
-  Icon,
-} from 'native-base';
+import { Container, Text } from 'native-base';
+import { createDrawerNavigator } from 'react-navigation';
 
-import Sidebar from './components/partials/Sidebar';
-import AppFooter from './components/partials/AppFooter';
-import AppBody from './components/partials/AppBody';
+import CategoryList from './components/categories/CategoryList';
+
+const CustomApp = createDrawerNavigator(CategoryList);
 
 export default class AnatomyExample extends Component {
   constructor(props) {
@@ -42,30 +32,6 @@ export default class AnatomyExample extends Component {
   render() {
     const { loading } = this.state;
     if (loading) return <Text>Loading</Text>;
-    return (
-      <Drawer
-        ref={ref => {
-          this.drawer = ref;
-        }}
-        content={<Sidebar />}
-        onClose={() => this.closeDrawer()}
-      >
-        <Container>
-          <Header>
-            <Left>
-              <Button transparent onPress={this.openDrawer}>
-                <Icon name="menu" />
-              </Button>
-            </Left>
-            <Body>
-              <Title>Header</Title>
-            </Body>
-            <Right />
-          </Header>
-          <AppBody />
-          <AppFooter />
-        </Container>
-      </Drawer>
-    );
+    return <CustomApp />;
   }
 }

@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { Content, Text } from 'native-base';
 
-class Sidebar extends Component {
+class AppBody extends Component {
   render() {
     return (
       <Content>
-        <Text>This is Content Section</Text>
+        <Text>{this.props.value}</Text>
       </Content>
     );
   }
 }
 
-export default Sidebar;
+export default AppBody;
